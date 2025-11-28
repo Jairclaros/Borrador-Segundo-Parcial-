@@ -48,17 +48,17 @@ def jugar_tateti(grilla: list):
         os.system("pause")
         os.system("cls")
 
+        if estado_partida(grilla) == False:
+            mostrar_matriz(grilla)
+            Ganador = 1
+            break
+
         if tablero_lleno(grilla) == True:
             print("\nEmpate, no hay más espacios.")
             mostrar_matriz(grilla)
             bandera = False
             break
-
         
-        if estado_partida(grilla) == False:
-            mostrar_matriz(grilla)
-            Ganador = 1
-            break
 
         while maquina:
             maquina = ingresar_maquina(grilla)

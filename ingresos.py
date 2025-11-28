@@ -1,4 +1,5 @@
 from combinar import *
+from especificas import *
 
 def actualizar_ocultas(lista_palabras: list, palabras_ingresadas: list, lista_ubicar: list, lista_revelar: list, estado_comodines: list) -> list:
     """_summary_

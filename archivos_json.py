@@ -1,6 +1,11 @@
 import json
 
 def crear_archivo_json():
+    """_summary_
+
+    Crea o valida la existencia del archivo Json
+
+    """
     try:
         with open("usuariosprueba.json", "r") as archivo:
             contenido = archivo.read()
@@ -14,6 +19,13 @@ def crear_archivo_json():
             archivo.write("[]")
 
 def leer_json():
+    """_summary_
+
+    Lee y retorna el contenido del Json 
+
+    Returns:
+        list: Lista de usuarios del archivo Json
+    """
     datos = []  
 
     try:
@@ -26,7 +38,14 @@ def leer_json():
 
     return datos
 
-def guardar_json(lista):
+def guardar_json(lista: list):
+    """_summary_
+
+    Guarda una lista de usuarios en el archivo Json
+    
+    Args:
+        lista (list): Lista que se guarda en el Json
+    """
     try:
         with open("usuariosprueba.json", "w") as archivo:
             json.dump(lista, archivo, indent=4)
@@ -35,6 +54,14 @@ def guardar_json(lista):
 
 
 def registrar_usuario():
+    """_summary_
+
+    Registra / Crea un nuevo usuario en el archivo Json 
+
+    Returns:
+        bool: Retorna True si el usuario se creo correctamente
+              Retorna None si ya existia el usuario o paso un error
+    """
     resultado = None
     usuarios = leer_json()
 
@@ -70,6 +97,14 @@ def registrar_usuario():
 
 
 def login():
+    """_summary_
+
+    Verifica el usuario y contrasena para iniciar sesion
+
+    Returns:
+        dict: Retorna el diccionario del usuario, si ingreso bien los datos
+              Retorna None si no coinciden los datos
+    """
     resultado = None
     usuarios = leer_json()
 
@@ -92,6 +127,17 @@ def login():
     return resultado  
 
 def actualizar_usuario_estadisticas(usuario_modificado: dict):
+    """_summary_
+
+    Actualiza las estadisticas de un usuario en el archivo Json
+
+    Args:
+        usuario_modificado (dict): Diccionario del usuario con sus datos modificados
+
+    Returns:
+        bool: Retorna True si se actualizaron bien las estadisticas del usuario
+              Retorna None si el usuario no existe en el archivo
+    """
     usuarios = leer_json()
     indice = -1 
     resultado = None
