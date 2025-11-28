@@ -3,6 +3,7 @@ from diccionario_juego import *
 from funciones_comodines import *
 from archivos_csv import *
 from comodin_extra import *
+from ingresos import *
 import os
 
 def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: int, partidas_temporales: list) -> bool:
@@ -44,7 +45,7 @@ def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: 
     puntaje_total = 0
 
     tiempo_inicio = time.time()
-    tiempo_limite = 17
+    tiempo_limite = 90
 
     bandera = True
     resultado_partida = False
@@ -75,9 +76,16 @@ def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: 
                 lista_ubicar = usar_comodin_ubicar(estado_comodines,lista_palabras,palabras_ingresadas,lista_letras,lista_ubicar)
             
             elif ingreso == "3":
-                procesar = False
-                resultado_partida = usar_comodin_tateti(estado_comodines, resultado_partida, diccionario_estadisticas)
-                break
+                if estado_comodines[2] == False:
+                    procesar = False
+                    resultado_partida = usar_comodin_tateti(estado_comodines, resultado_partida, diccionario_estadisticas)
+                    break
+                else:
+                    procesar = False
+                    print("El comodín Ta-te-ti ya fue usado.")
+                    os.system("pause")
+                    os.system("cls")
+
 
             if procesar:
                 puntos = verificar_ingreso(ingreso,palabras_disponibles,palabras_ingresadas)
