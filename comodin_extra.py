@@ -8,7 +8,7 @@ def usar_comodin_tateti(estado_bandera: dict, resultado_partida: bool, estadisti
         valor = jugar_tateti(grilla)
 
         if valor == 1: 
-            estadisticas["Puntuacion Total"] += 500
+            estadisticas["Puntuacion Total"] += 450
             resultado_partida = True
             print("\nGanaste 500 puntos")
             print("Pasaste a la siguiente ronda\n")

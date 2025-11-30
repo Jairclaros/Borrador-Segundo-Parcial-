@@ -84,8 +84,7 @@ def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: 
                     procesar = False
                     print("El comodín Ta-te-ti ya fue usado.")
                     os.system("pause")
-                    os.system("cls")
-
+                    os.system("cls")                    
 
             if procesar:
                 puntos = verificar_ingreso(ingreso,palabras_disponibles,palabras_ingresadas)

@@ -1,4 +1,3 @@
-
 def mostrar_estado_ronda(lista_palabras: list, incorrectas: int, puntuacion_total: int):
     """_summary_
 
@@ -76,3 +75,15 @@ def rebanar(cadena: str, inicio: int, finalizacion: int) -> str:
         cadena_auxiliar += cadena[caracter]
 
     return cadena_auxiliar
+
+def mostrar_resultado_final(resultado: bool, estadisticas: dict):
+
+    if resultado == True:
+        print("\n¡ Felicitaciones, Ganaste El Juego !")
+        print(f"\nEstadisticas Finales:\n")
+        mostrar_diccionario(estadisticas)
+
+    else:
+        print("\n💀 Juego terminado. Mejor suerte la próxima.")
+        print(f"\nEstadisticas Finales:\n")
+        mostrar_diccionario(estadisticas)

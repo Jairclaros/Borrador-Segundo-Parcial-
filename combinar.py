@@ -75,7 +75,16 @@ def combinar_listas_ubicar(lista_ubicar: list, lista_ocultas_base: list, lista_p
 
 
 def combinar_listas(lista_ubicar: list, lista_revelada: list, lista_palabras: list) -> list:
-    
+    """_summary_
+
+    Args:
+        lista_ubicar (list): _description_
+        lista_revelada (list): _description_
+        lista_palabras (list): _description_
+
+    Returns:
+        list: _description_
+    """
     lista = []
 
     for i in range(len(lista_palabras)):
@@ -83,25 +92,40 @@ def combinar_listas(lista_ubicar: list, lista_revelada: list, lista_palabras: li
         palabra_ubicada = lista_ubicar[i]
         palabra_revelada = lista_revelada[i]
 
-        palabra_final = ""
-
-        for j in range(len(palabra_real)):
-            letra_real = palabra_real[j]
-            letra_ubicada = palabra_ubicada[j]
-            letra_revelada = palabra_revelada[j]
-
-            if letra_ubicada != "_" and letra_ubicada == letra_real:
-                palabra_final += letra_ubicada
-
-            elif letra_revelada != "_" and letra_revelada == letra_real:
-                palabra_final += letra_revelada
-
-            else:
-                palabra_final += "_"
-
+        palabra_final = armar_palabra_comodin(palabra_real, palabra_ubicada, palabra_revelada)
         lista.append(palabra_final)
 
     return lista
+
+def armar_palabra_comodin(palabra_real: str, palabra_ubicada: str, palabra_revelada: str) -> str:
+    """_summary_
+
+    Args:
+        palabra_real (str): _description_
+        palabra_ubicada (str): _description_
+        palabra_revelada (str): _description_
+
+    Returns:
+        str: _description_
+    """
+
+    palabra_final = ""
+
+    for j in range(len(palabra_real)):
+        letra_real = palabra_real[j]
+        letra_ubicada = palabra_ubicada[j]
+        letra_revelada = palabra_revelada[j]
+
+        if letra_ubicada != "_" and letra_ubicada == letra_real:
+            palabra_final += letra_ubicada
+        
+        elif letra_revelada != "_" and letra_revelada == letra_real:
+            palabra_final += letra_revelada
+        
+        else:
+            palabra_final += "_"
+
+    return palabra_final
 
 
 def combinar_palabra(ocultas_actual: str, palabra: str, palabra_ubicada: str) -> str:

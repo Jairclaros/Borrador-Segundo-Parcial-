@@ -27,4 +27,4 @@ def actualizar_estadisticas(usuario: dict, estadisticas: dict):
     usuario["Tiempo entre niveles"] = estadisticas["Tiempo entre niveles"]
     usuario["Tiempo promedio entre niveles"] = estadisticas["Tiempo promedio entre niveles"]
 
-    actualizar_usuario_estadisticas(usuario)
+    actualizar_usuario_estadisticas(usuario, "usuariosprueba.json")

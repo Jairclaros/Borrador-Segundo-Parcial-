@@ -18,7 +18,7 @@ def crear_archivo_json():
         with open("usuariosprueba.json", "w") as archivo:
             archivo.write("[]")
 
-def leer_json():
+def leer_json(path: str):
     """_summary_
 
     Lee y retorna el contenido del Json 
@@ -29,16 +29,16 @@ def leer_json():
     datos = []  
 
     try:
-        with open("usuariosprueba.json", "r") as archivo:
+        with open(path, "r") as archivo:
             datos = json.load(archivo)
     except:
-        with open("usuariosprueba.json", "w") as archivo:
+        with open(path, "w") as archivo:
             archivo.write("[]")
         datos = [] 
 
     return datos
 
-def guardar_json(lista: list):
+def guardar_json(lista: list, path: str):
     """_summary_
 
     Guarda una lista de usuarios en el archivo Json
@@ -47,13 +47,13 @@ def guardar_json(lista: list):
         lista (list): Lista que se guarda en el Json
     """
     try:
-        with open("usuariosprueba.json", "w") as archivo:
+        with open(path, "w") as archivo:
             json.dump(lista, archivo, indent=4)
     except:
         print("Error al guardar el archivo JSON.")
 
 
-def registrar_usuario():
+def registrar_usuario(path: str):
     """_summary_
 
     Registra / Crea un nuevo usuario en el archivo Json 
@@ -63,7 +63,7 @@ def registrar_usuario():
               Retorna None si ya existia el usuario o paso un error
     """
     resultado = None
-    usuarios = leer_json()
+    usuarios = leer_json(path)
 
     print("\n--- REGISTRAR NUEVO USUARIO ---")
 
@@ -89,14 +89,14 @@ def registrar_usuario():
         }
 
         usuarios.append(nuevo_usuario)
-        guardar_json(usuarios)
+        guardar_json(usuarios, path)
         print("Usuario registrado con éxito.")
         resultado = True
 
     return resultado   
 
 
-def login():
+def login(path: str):
     """_summary_
 
     Verifica el usuario y contrasena para iniciar sesion
@@ -106,7 +106,7 @@ def login():
               Retorna None si no coinciden los datos
     """
     resultado = None
-    usuarios = leer_json()
+    usuarios = leer_json(path)
 
     print("INICIAR SESION:\n")
 
@@ -126,7 +126,7 @@ def login():
 
     return resultado  
 
-def actualizar_usuario_estadisticas(usuario_modificado: dict):
+def actualizar_usuario_estadisticas(usuario_modificado: dict, path: str):
     """_summary_
 
     Actualiza las estadisticas de un usuario en el archivo Json
@@ -138,7 +138,7 @@ def actualizar_usuario_estadisticas(usuario_modificado: dict):
         bool: Retorna True si se actualizaron bien las estadisticas del usuario
               Retorna None si el usuario no existe en el archivo
     """
-    usuarios = leer_json()
+    usuarios = leer_json(path)
     indice = -1 
     resultado = None
 
@@ -148,7 +148,7 @@ def actualizar_usuario_estadisticas(usuario_modificado: dict):
 
     if indice != -1:
         usuarios[indice] = usuario_modificado
-        guardar_json(usuarios)
+        guardar_json(usuarios, path)
         resultado = True
     else:
         print("No se pudo actualizar el usuario porque no existe.")

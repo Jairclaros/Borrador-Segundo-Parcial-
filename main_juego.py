@@ -1,6 +1,6 @@
 from juego_muestra import *
 
-def jugar_juego(diccionario: list[dict], estadisticas: dict) -> bool:
+def jugar_juego(estadisticas: dict) -> bool:
     """_summary_
 
     Controla e inicia el juego completo en un formato de 5 niveles
@@ -26,12 +26,11 @@ def jugar_juego(diccionario: list[dict], estadisticas: dict) -> bool:
     juego_ganado = False
     contador = 0
 
-    crear_csv(diccionario)
-    diccionario_jueguito = reconstruir_diccionario("diccionario_juego.csv")
+    diccionario_juego = reconstruir_diccionario("diccionario_juego.csv")
 
     while nivel <= 5 and bandera:
 
-        nivel_completo = jugar_nivel(diccionario_jueguito, nivel, estadisticas, contador)
+        nivel_completo = jugar_nivel(diccionario_juego, nivel, estadisticas, contador)
 
 
         if not nivel_completo:

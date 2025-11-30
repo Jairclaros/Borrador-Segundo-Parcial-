@@ -13,18 +13,16 @@ def main():
 
     while bandera:
 
-
         opcion = input("1. Iniciar sesión\n2. Registrarse\n3. Jugar Decifrar Palabra\n4. Ver Estadísticas\n5. Salir del programa\nElija una opción: ")
 
         match opcion:
 
             case "1":
                 os.system("cls")
-                usuario_login = login()
+                usuario_login = login("usuariosprueba.json")
 
                 if usuario_login != None:
                     usuario = usuario_login
-
                     estadisticas = cargar_estadisticas(usuario)
 
                     print(f"\nSesión iniciada como: {usuario['Usuario']}")
@@ -32,25 +30,18 @@ def main():
                     print("No se pudo iniciar sesión.")
 
             case "2":
-                registrar_usuario()
+                registrar_usuario("usuariosprueba.json")
 
             case "3":
 
                 if usuario == None:
                     print("Debe iniciar sesión antes de jugar.")
+
                 else:
                     limpiar_estadisticas(estadisticas)
-
-                    resultado = jugar_juego(diccionario_prueba, estadisticas)
+                    resultado = jugar_juego(estadisticas)
                 
-                    if resultado:
-                        print("\n¡ Felicitaciones, Ganaste El Juego !")
-                        print(f"\nEstadisticas Finales:\n")
-                        mostrar_diccionario(estadisticas)
-                    else:
-                        print("\n💀 Juego terminado. Mejor suerte la próxima.")
-                        print(f"\nEstadisticas Finales:\n")
-                        mostrar_diccionario(estadisticas)
+                    mostrar_resultado_final(resultado, estadisticas)
 
                     actualizar_estadisticas(usuario, estadisticas)
 
