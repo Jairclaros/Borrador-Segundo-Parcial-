@@ -1,3 +1,4 @@
+from reconstruir_diccionario_csv import *
 from juego_muestra import *
 
 def jugar_juego(estadisticas: dict) -> bool:

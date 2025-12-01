@@ -1,7 +1,8 @@
 from diccionario_juego import *
 from estadisticas import *
 from main_juego import *
-from archivos_json import *   
+from archivos_json import *
+from funciones_menu import *   
 import os
 
 
@@ -33,27 +34,11 @@ def main():
                 registrar_usuario("usuariosprueba.json")
 
             case "3":
-
-                if usuario == None:
-                    print("Debe iniciar sesión antes de jugar.")
-
-                else:
-                    limpiar_estadisticas(estadisticas)
-                    resultado = jugar_juego(estadisticas)
+                ejecutar_juego(usuario, estadisticas)
                 
-                    mostrar_resultado_final(resultado, estadisticas)
-
-                    actualizar_estadisticas(usuario, estadisticas)
-
             case "4":
                 os.system("cls")
-                if usuario == None:
-                    print("Debe iniciar sesión para ver estadísticas.\n")
-                else:
-                    print(f"Estadisticas de {usuario["Usuario"]}:\n")
-
-                    mostrar_diccionario(estadisticas)
-                    print("\n")
+                ver_estadisticas(usuario, estadisticas)
 
             case "5":
                 os.system("cls")
