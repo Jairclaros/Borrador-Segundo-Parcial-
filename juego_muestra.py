@@ -2,8 +2,8 @@ from especificas import *
 from diccionario_juego import *
 from funciones_comodines import *
 from archivos_csv import *
-from comodin_extra import *
-from ingresos import *
+from comodin_tateti import *
+from funciones_ingreso import *
 import os
 
 def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: int, partidas_temporales: list) -> bool:
@@ -104,52 +104,3 @@ def jugar_palabras(diccionario: dict, nivel: int, estadisticas: dict, contador: 
                 bandera = False
 
     return resultado_partida
-
-
-def jugar_nivel(diccionario: dict, nivel_actual: int, estadisticas: dict, contador: int) -> bool:
-    """_summary_
-
-    Juega las 3 rondas correspondientes al nivel del juego, mostrando los comodines disponibles.
-    Y muestra en que nivel y ronda esta jugando el usuario
-
-    Args:
-        diccionario (dict): Diccionario del juego que contiene todas las palabras, niveles, letas, etc del juego
-        nivel_actual (int): Numero del nivel que se esta jugando
-        estadisticas (dict): Diccionario donde se guardan las estadisticas
-        contador (int): Contador que cuenta el total de rondas jugas 
-
-    Returns:
-        bool: True si el jugador completa las 3 rondas del nivel,
-              False si no completa el nivel.
-    """
-
-    rondas = 0
-    completar_nivel = True
-    nivel_diccionario = diccionario[nivel_actual - 1]
-
-    partidas_temporales = copiar_lista(nivel_diccionario["partidas"])
-
-    while rondas < 3:
-
-        os.system("cls")
-        print(f"\nNivel {nivel_actual}\n")
-        print(f"Ronda {rondas + 1} / 3\n")
-
-        estado_comodines = nivel_diccionario["estado_comodines"]
-        mostrar_comodines(estado_comodines)
-
-        bandera_ronda = jugar_palabras(diccionario,nivel_actual,estadisticas, contador, partidas_temporales)
-
-        if bandera_ronda:
-            os.system("pause")
-
-        if bandera_ronda == True:
-            rondas += 1
-            contador += 1
-        else:
-            completar_nivel = False
-            rondas = 3    
-
-    os.system("cls")
-
-    return completar_nivel

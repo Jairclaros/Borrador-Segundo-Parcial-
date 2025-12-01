@@ -1,4 +1,4 @@
-from funciones_recorrer_comodin import *
+from recorrer_tateti import *
 import random
 
 
@@ -18,23 +18,6 @@ def mostrar_matriz(matriz: list):
             print(matriz[i][j], end= " ")
         print()
 
-
-# def get_int(mensaje: str, mensaje_error: str, minimo: int, maximo: int, reintentos: int) -> int|None:
-
-#     numero_valido = int(input(mensaje)) - 1
- 
-#     while numero_valido < minimo or numero_valido > maximo:
-        
-#         if reintentos == 0:
-#             print("Error... vuelvalo a intentar mas tarde")
-#             return None
-#         else:
-#             print(f"Numero invalido, le quedan {reintentos} reintentos")
-#             numero_valido = int(input(mensaje_error))
-#             reintentos -= 1 
-    
-    
-#     return numero_valido
 
 def get_int(mensaje: str, mensaje_error: str, minimo: int, maximo: int, reintentos: int) -> int | None:
     """summary

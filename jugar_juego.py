@@ -1,5 +1,5 @@
-from reconstruir_diccionario_csv import *
-from juego_muestra import *
+from reconstruir_dict_csv import *
+from jugar_nivel import *
 
 def jugar_juego(estadisticas: dict) -> bool:
     """_summary_

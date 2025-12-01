@@ -4,7 +4,6 @@ from diccionario_juego import *
 import random
 
 
-
 def revelar_mitad(palabras_ingresadas: list, palabras_asociadas: list) -> list:
     """_summary_
 

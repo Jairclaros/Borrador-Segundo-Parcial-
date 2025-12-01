@@ -1,6 +1,6 @@
 from diccionario_juego import *
-from estadisticas import *
-from main_juego import *
+from funciones_estadisticas import *
+from jugar_juego import *
 from archivos_json import *
 from funciones_menu import *   
 import os
